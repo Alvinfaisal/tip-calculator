@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // membuat data selectList agar select option lebih dinamis
-const selectList = [
+const selectList1 = [
   {
     value: 0,
     text: "Dissatified (0%)",
@@ -17,6 +17,25 @@ const selectList = [
   {
     value: 20,
     text: "Absolutely amazing! (20%)",
+  },
+];
+
+const selectList2 = [
+  {
+    value: 0,
+    text: "Dissatified (0%)",
+  },
+  {
+    value: 5,
+    text: "It not too bad (5%)",
+  },
+  {
+    value: 10,
+    text: "It was better (10%)",
+  },
+  {
+    value: 20,
+    text: "Absolutely fenomenal (20%)",
   },
 ];
 
@@ -115,19 +134,29 @@ function InputTip({
         value={percentage1}
         handleChange={(event) => setPercentage1(Number(event.target.value))}
         label={"How did you like the service?"}
-      />
+      >
+        {/* menampilkan isi select option berasal dari array object selectList */}
+        {selectList1.map((item) => (
+          <option value={item.value}>{item.text}</option>
+        ))}
+      </InputSelect>
 
       <InputSelect
         value={percentage2}
         handleChange={(event) => setPercentage2(Number(event.target.value))}
         label={"How did your friend like the service?"}
-      />
+      >
+        {/* menampilkan isi select option berasal dari array object selectList */}
+        {selectList2.map((item) => (
+          <option value={item.value}>{item.text}</option>
+        ))}
+      </InputSelect>
     </div>
   );
 }
 
-// Membuat reusable component - versi 1 tanpa children
-function InputSelect({ value, handleChange, label }) {
+// Membuat reusable component - versi 2 menggunakan children
+function InputSelect({ value, handleChange, label, children }) {
   return (
     <div className="input-percentage-service">
       <label>{label}</label>
@@ -136,10 +165,8 @@ function InputSelect({ value, handleChange, label }) {
         value={value}
         onChange={handleChange}
       >
-        {/* menampilkan isi select option berasal dari array object selectList */}
-        {selectList.map((item) => (
-          <option value={item.value}>{item.text}</option>
-        ))}
+        {/* menambahkan props children agar membuat isi dari tag select lebih dinamis */}
+        {children}
       </select>
     </div>
   );
