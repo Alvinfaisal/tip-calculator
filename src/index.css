@@ -105,3 +105,30 @@ select {
   font-weight: 600;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  body {
+    background-color: aqua;
+  }
+
+  .container {
+    width: 500px;
+  }
+
+  .body-tip-calculator {
+    grid-template-rows: auto;
+  }
+
+  .title {
+    grid-column: span 12;
+  }
+
+  .body-input {
+    grid-column: span 12;
+    flex-direction: column;
+  }
+
+  .body-output {
+    grid-column: span 12;
+  }
+}
