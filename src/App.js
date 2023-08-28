@@ -1,43 +1,9 @@
 import React, { useState } from "react";
 
-// membuat data selectList agar select option lebih dinamis
-const selectList1 = [
-  {
-    value: 0,
-    text: "Dissatified (0%)",
-  },
-  {
-    value: 5,
-    text: "It was okay (5%)",
-  },
-  {
-    value: 10,
-    text: "It was good (10%)",
-  },
-  {
-    value: 20,
-    text: "Absolutely amazing! (20%)",
-  },
-];
-
-const selectList2 = [
-  {
-    value: 0,
-    text: "Dissatified (0%)",
-  },
-  {
-    value: 5,
-    text: "It not too bad (5%)",
-  },
-  {
-    value: 10,
-    text: "It was better (10%)",
-  },
-  {
-    value: 20,
-    text: "Absolutely fenomenal (20%)",
-  },
-];
+// import component
+import Title from "./components/Title";
+import Output from "./components/Output";
+import InputTip from "./components/InputTip";
 
 // App component
 function App() {
@@ -71,7 +37,7 @@ function App() {
         setPercentage2(0);
       }
     } else {
-      alert("Terima Kasih 😊");
+      alert("Thanks 😊");
     }
   }
 
@@ -93,99 +59,6 @@ function App() {
           billAfterTips={billAfterTips}
           onReset={handleReset}
         />
-      </div>
-    </div>
-  );
-}
-
-// Title component
-function Title() {
-  return (
-    <div className="title">
-      <h2>💵 Tip calculator 🤑</h2>
-    </div>
-  );
-}
-
-// InputTip component
-function InputTip({
-  bill,
-  percentage1,
-  percentage2,
-  setBill,
-  setPercentage1,
-  setPercentage2,
-}) {
-  return (
-    <div className="body-input">
-      <div className="input-bil">
-        <label>How much was the bill?</label>
-        <input
-          type="text"
-          placeholder="0"
-          //2. menggunakan state bill sebagai value inputan bill
-          value={bill}
-          onChange={(event) => setBill(Number(event.target.value))}
-        />
-      </div>
-
-      {/* versi 1 */}
-      <InputSelect
-        value={percentage1}
-        handleChange={(event) => setPercentage1(Number(event.target.value))}
-        label={"How did you like the service?"}
-      >
-        {/* menampilkan isi select option berasal dari array object selectList */}
-        {selectList1.map((item) => (
-          <option value={item.value}>{item.text}</option>
-        ))}
-      </InputSelect>
-
-      <InputSelect
-        value={percentage2}
-        handleChange={(event) => setPercentage2(Number(event.target.value))}
-        label={"How did your friend like the service?"}
-      >
-        {/* menampilkan isi select option berasal dari array object selectList */}
-        {selectList2.map((item) => (
-          <option value={item.value}>{item.text}</option>
-        ))}
-      </InputSelect>
-    </div>
-  );
-}
-
-// Membuat reusable component - versi 2 menggunakan children
-function InputSelect({ value, handleChange, label, children }) {
-  return (
-    <div className="input-percentage-service">
-      <label>{label}</label>
-      <select
-        //2. menggunakan state percentage1 sebagai value inputan percentage1
-        value={value}
-        onChange={handleChange}
-      >
-        {/* menambahkan props children agar membuat isi dari tag select lebih dinamis */}
-        {children}
-      </select>
-    </div>
-  );
-}
-
-// Output component
-function Output({ bill, tips, billAfterTips, onReset }) {
-  return (
-    <div className="body-output">
-      {/* Menampilkan output dari proses perhitungan */}
-      <div className="output">
-        <h3>
-          You pay ${billAfterTips === 0 ? "0" : `${billAfterTips}`} (${bill} + $
-          {tips} Tip)
-        </h3>
-      </div>
-      {/* Tombol untuk reset data inputan */}
-      <div className="reset" onClick={onReset}>
-        <button className="btn-reset">Reset</button>
       </div>
     </div>
   );
