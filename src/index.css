@@ -106,11 +106,10 @@ select {
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  body {
-    background-color: aqua;
-  }
-
+@media (max-width: 480px) {
+  /* body {
+    background-color: #ffb158;
+  } */
   .container {
     width: 500px;
   }
