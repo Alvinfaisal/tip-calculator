@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
+// App component
 function App() {
-  // Mengelola locale state  => lifting up state from input
+  //1. Mendeklarasikan locale state  => lifting up state from input
   const [bill, setBill] = useState(0);
   const [percentage1, setPercentage1] = useState(0);
   const [percentage2, setPercentage2] = useState(0);
@@ -58,6 +59,7 @@ function App() {
   );
 }
 
+// Title component
 function Title() {
   return (
     <div className="title">
@@ -66,6 +68,7 @@ function Title() {
   );
 }
 
+// InputTip component
 function InputTip({
   bill,
   percentage1,
@@ -81,6 +84,7 @@ function InputTip({
         <input
           type="text"
           placeholder="0"
+          //2. menggunakan state bill sebagai value inputan bill
           value={bill}
           onChange={(event) => setBill(Number(event.target.value))}
         />
@@ -88,6 +92,7 @@ function InputTip({
       <div className="input-percentage-service">
         s<label>How did you like the service?</label>
         <select
+          //2. menggunakan state percentage1 sebagai value inputan percentage1
           value={percentage1}
           onChange={(event) => setPercentage1(Number(event.target.value))}
         >
@@ -101,7 +106,9 @@ function InputTip({
       <div className="input-percentage-service">
         <label>How did your friend like the service?</label>
         <select
+          //2. menggunakan state percentage2 sebagai value inputan percentage2
           value={percentage2}
+          // 3. Menambahkan handle controller untuk mengupdate nilai state
           onChange={(event) => setPercentage2(Number(event.target.value))}
         >
           <option value={0}>Dissatified (0%)</option>
@@ -114,15 +121,18 @@ function InputTip({
   );
 }
 
+// Output component
 function Output({ bill, tips, billAfterTips, onReset }) {
   return (
     <div className="body-output">
+      {/* Menampilkan output dari proses perhitungan */}
       <div className="output">
         <h3>
           You pay ${billAfterTips === 0 ? "0" : `${billAfterTips}`} (${bill} + $
           {tips} Tip)
         </h3>
       </div>
+      {/* Tombol untuk reset data inputan */}
       <div className="reset" onClick={onReset}>
         <button className="btn-reset">Reset</button>
       </div>
