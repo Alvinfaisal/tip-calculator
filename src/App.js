@@ -89,34 +89,38 @@ function InputTip({
           onChange={(event) => setBill(Number(event.target.value))}
         />
       </div>
-      <div className="input-percentage-service">
-        s<label>How did you like the service?</label>
-        <select
-          //2. menggunakan state percentage1 sebagai value inputan percentage1
-          value={percentage1}
-          onChange={(event) => setPercentage1(Number(event.target.value))}
-        >
-          <option value={0}>Dissatified (0%)</option>
-          <option value={5}>It was okay (5%)</option>
-          <option value={10}>It was good (10%)</option>
-          <option value={20}>Absolutely amazing! (20%)</option>
-        </select>
-      </div>
 
-      <div className="input-percentage-service">
-        <label>How did your friend like the service?</label>
-        <select
-          //2. menggunakan state percentage2 sebagai value inputan percentage2
-          value={percentage2}
-          // 3. Menambahkan handle controller untuk mengupdate nilai state
-          onChange={(event) => setPercentage2(Number(event.target.value))}
-        >
-          <option value={0}>Dissatified (0%)</option>
-          <option value={5}>It was okay (5%)</option>
-          <option value={10}>It was good (10%)</option>
-          <option value={20}>Absolutely amazing! (20%)</option>
-        </select>
-      </div>
+      {/* versi 1 */}
+      <InputSelect
+        value={percentage1}
+        handleChange={(event) => setPercentage1(Number(event.target.value))}
+        label={"How did you like the service?"}
+      />
+
+      <InputSelect
+        value={percentage2}
+        handleChange={(event) => setPercentage2(Number(event.target.value))}
+        label={"How did your friend like the service?"}
+      />
+    </div>
+  );
+}
+
+// Membuat reusable component - versi 1 tanpa children
+function InputSelect({ value, handleChange, label }) {
+  return (
+    <div className="input-percentage-service">
+      <label>{label}</label>
+      <select
+        //2. menggunakan state percentage1 sebagai value inputan percentage1
+        value={value}
+        onChange={handleChange}
+      >
+        <option value={0}>Dissatified (0%)</option>
+        <option value={5}>It was okay (5%)</option>
+        <option value={10}>It was good (10%)</option>
+        <option value={20}>Absolutely amazing! (20%)</option>
+      </select>
     </div>
   );
 }
