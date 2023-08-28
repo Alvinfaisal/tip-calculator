@@ -1,5 +1,25 @@
 import React, { useState } from "react";
 
+// membuat data selectList agar select option lebih dinamis
+const selectList = [
+  {
+    value: 0,
+    text: "Dissatified (0%)",
+  },
+  {
+    value: 5,
+    text: "It was okay (5%)",
+  },
+  {
+    value: 10,
+    text: "It was good (10%)",
+  },
+  {
+    value: 20,
+    text: "Absolutely amazing! (20%)",
+  },
+];
+
 // App component
 function App() {
   //1. Mendeklarasikan locale state  => lifting up state from input
@@ -116,10 +136,10 @@ function InputSelect({ value, handleChange, label }) {
         value={value}
         onChange={handleChange}
       >
-        <option value={0}>Dissatified (0%)</option>
-        <option value={5}>It was okay (5%)</option>
-        <option value={10}>It was good (10%)</option>
-        <option value={20}>Absolutely amazing! (20%)</option>
+        {/* menampilkan isi select option berasal dari array object selectList */}
+        {selectList.map((item) => (
+          <option value={item.value}>{item.text}</option>
+        ))}
       </select>
     </div>
   );
