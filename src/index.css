@@ -1,0 +1,107 @@
+:root {
+  --green-asin: rgb(191, 216, 191);
+  --green-asin-shadow: rgb(0, 145, 114);
+  --color-main: rgb(0, 145, 114);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aliceblue;
+  color: var(--color-main);
+}
+
+.container {
+  width: 1240px;
+  margin: 5rem auto;
+  padding: 20px 20px;
+}
+
+.body-tip-calculator {
+  background-color: wheat;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 200px;
+  box-shadow: 10px 10px 10px #ffb158;
+  border-radius: 50px 0px 50px 0px;
+  padding: 10px;
+}
+
+.title {
+  grid-column: span 12;
+  text-transform: uppercase;
+  text-decoration: underline;
+  background-color: var(--green-asin);
+  justify-content: center;
+  width: 340px;
+  text-align: center;
+  padding: 20px 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px var(--green-asin-shadow);
+  margin: 2rem auto;
+}
+
+.body-input {
+  grid-column: span 8;
+  padding: 50px 20px;
+  background-color: var(--green-asin);
+  margin: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  gap: 10px;
+  box-shadow: 10px 10px 10px var(--green-asin-shadow);
+}
+
+::placeholder {
+  color: var(--color-main);
+}
+
+.body-input input,
+select {
+  background-color: wheat;
+  padding: 5px;
+  color: var(--color-main);
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.body-output {
+  background-color: var(--green-asin);
+  grid-column: span 4;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px var(--green-asin-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.output {
+  background-color: wheat;
+  padding: 30px 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-reset {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: wheat;
+  color: var(--color-main);
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
